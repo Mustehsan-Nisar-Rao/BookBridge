@@ -1,0 +1,35 @@
+{
+  "name": "bookbridge-backend",
+  "version": "1.0.0",
+  "description": "BookBridge - Student Book Exchange Platform Backend",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "bookbridge",
+    "book-exchange",
+    "student-platform"
+  ],
+  "author": "BookBridge Team",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.6.0",
+    "nodemailer": "^6.10.1",
+    "pg": "^8.20.0",
+    "socket.io": "^4.8.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookBridge | Project Dataset Dashboard</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --accent: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            margin-bottom: 60px;
+            text-align: center;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .table-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .table-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .table-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: capitalize;
+        }
+
+        .badge {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(15, 23, 42, 0.5);
+            padding: 15px;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+            white-space: nowrap;
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        .empty-state {
+            padding: 40px;
+            text-align: center;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Dataset Explorer</h1>
+            <p class="subtitle">Live Project Data Visualization</p>
+        </header>
+
+        <div class="dashboard-grid">
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h2 class="table-title">admin_logs</h2>
+                    <span class="badge">16 Records</span>
+                </div>
+                <div class="table-container">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>admin_id</th>
+                                <th>action_type</th>
+                                <th>resource_type</th>
+                                <th>resource_id</th>
+                                <th>description</th>
+                                <th>created_at</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>1</td>
+                                <td>4</td>
+                                <td>REMOVE_BOOK</td>
+                                <td>books</td>
+                                <td>6</td>
+                                <td>Removed by admin</td>
+                                <td>Wed Apr 01 2026 06:21:13 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>4</td>
+                                <td>DELETE_USER</td>
+                                <td>users</td>
+                                <td>3</td>
+                                <td>Deleted user: Haris (haris@university.com)</td>
+                                <td>Wed Apr 01 2026 06:21:24 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>REMOVE_BOOK</td>
+                                <td>books</td>
+                                <td>8</td>
+                                <td>Removed by admin</td>
+                                <td>Wed Apr 01 2026 06:29:13 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>4</td>
+                                <td>4</td>
+                                <td>REMOVE_BOOK</td>
+                                <td>books</td>
+                                <td>9</td>
+                                <td>Removed by admin</td>
+                                <td>Wed Apr 01 2026 06:31:43 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>5</td>
+                                <td>4</td>
+                                <td>VERIFY_USER</td>
+                                <td>users</td>
+                                <td>6</td>
+                                <td>User verified</td>
+                                <td>Wed Apr 01 2026 06:33:31 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>6</td>
+                                <td>4</td>
+                                <td>DELETE_USER</td>
+                                <td>users</td>
+                                <td>6</td>
+                                <td>Deleted user: Mubashir12 (m@university.com)</td>
+                                <td>Wed Apr 01 2026 06:33:56 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>7</td>
+                                <td>4</td>
+                                <td>PAYMENT_APPROVED</td>
+                                <td>transaction</td>
+                                <td>9</td>
+                                <td>Admin approved payment for transaction #9</td>
+                                <td>Wed Apr 01 2026 08:41:25 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>8</td>
+                                <td>4</td>
+                                <td>PAYMENT_APPROVED</td>
+                                <td>transaction</td>
+                                <td>10</td>
+                                <td>Admin approved payment for transaction #10</td>
+                                <td>Wed Apr 01 2026 09:08:42 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>9</td>
+                                <td>5</td>
+                                <td>PAYMENT_APPROVED</td>
+                                <td>transaction</td>
+                                <td>11</td>
+                                <td>Admin approved payment for transaction #11</td>
+                                <td>Wed Apr 01 2026 09:18:00 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>10</td>
+                                <td>5</td>
+                                <td>PAYMENT_APPROVED</td>
+                                <td>transaction</td>
+                                <td>13</td>
+                                <td>Admin approved payment for transaction #13</td>
+                                <td>Wed Apr 01 2026 09:23:52 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td>5</td>
+                                <td>PAYMENT_APPROVED</td>
+                                <td>transaction</td>
+                                <td>15</td>
+                                <td>Admin approved payment for transaction #15</td>
+                                <td>Wed Apr 01 2026 09:37:40 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td>5</td>
+                                <td>PAYMENT_APPROVED</td>
+                                <td>transaction</td>
+                                <td>16</td>
+                                <td>Admin approved payment for transaction #16</td>
+                                <td>Wed Apr 01 2026 09:51:00 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>13</td>
+                                <td>5</td>
+                                <td>PAYMENT_APPROVED</td>
+                                <td>transaction</td>
+                                <td>17</td>
+                                <td>Admin approved payment for transaction #17</td>
+                                <td>Wed Apr 01 2026 09:53:52 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>14</td>
+                                <td>5</td>
+                                <td>PAYMENT_APPROVED</td>
+                                <td>transaction</td>
+                                <td>18</td>
+                                <td>Admin approved payment for transaction #18</td>
+                                <td>Wed Apr 01 2026 10:05:39 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>15</td>
+                                <td>5</td>
+                                <td>VERIFY_USER</td>
+                                <td>users</td>
+                                <td>8</td>
+                                <td>User verified</td>
+                                <td>Wed Apr 01 2026 10:18:36 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                            <tr>
+                                <td>16</td>
+                                <td>5</td>
+                                <td>VERIFY_USER</td>
+                                <td>users</td>
+                                <td>7</td>
+                                <td>User verified</td>
+                                <td>Wed Apr 01 2026 10:18:40 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h2 class="table-title">advertisements</h2>
+                    <span class="badge">0 Records</span>
+                </div>
+                <div class="table-container">
+                    <div class="empty-state">No data available in this table.</div>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h2 class="table-title">books</h2>
+                    <span class="badge">20 Records</span>
+                </div>
+                <div class="table-container">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>seller_id</th>
+                                <th>title</th>
+                                <th>author</th>
+                                <th>subject</th>
+                                <th>class_name</th>
+                                <th>university</th>
+                                <th>description</th>
+                                <th>condition</th>
+                                <th>price</th>
+                                <th>status</th>
+                                <th>book_type</th>
+                                <th>isbn</th>
+                                <th>image_url</th>
+                                <th>quantity_available</th>
+                                <th>views_count</th>
+                                <th>created_at</th>
+                                <th>updated_at</th>
+                                <th>accepted_payment_methods</th>
+                                <th>jazzcash_number</th>
+                                <th>easypaisa_number</th>
+                                <th>bank_details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>king</td>
+                                <td>william</td>
+                                <td>Physics</td>
+                                <td>12</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>1192.00</td>
+                                <td>available</td>
+                                <td>sale</td>
+                                <td>12</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>20</td>
+                                <td>Tue Mar 24 2026 06:06:03 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 10:26:09 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>king</td>
+                                <td>william</td>
+                                <td>Physics</td>
+                                <td>12</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>1192.00</td>
+                                <td>sold</td>
+                                <td>sale</td>
+                                <td>12</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>9</td>
+                                <td>Tue Mar 24 2026 06:06:26 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 07:11:11 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>1</td>
+                                <td>cs</td>
+                                <td>william</td>
+                                <td>Programming</td>
+                                <td>12</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>1192.00</td>
+                                <td>sold</td>
+                                <td>sale</td>
+                                <td>12</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>18</td>
+                                <td>Tue Mar 24 2026 06:07:02 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 06:57:36 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>4</td>
+                                <td>1</td>
+                                <td>war</td>
+                                <td>william</td>
+                                <td>History</td>
+                                <td>12</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>5.00</td>
+                                <td>sold</td>
+                                <td>sale</td>
+                                <td>12</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>28</td>
+                                <td>Tue Mar 24 2026 06:53:36 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 06:46:54 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>7</td>
+                                <td>7</td>
+                                <td>MuzammilBook</td>
+                                <td>Muzakir</td>
+                                <td>Biology</td>
+                                <td>12</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>11.00</td>
+                                <td>available</td>
+                                <td>sale</td>
+                                <td>123</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>12</td>
+                                <td>Wed Apr 01 2026 06:24:04 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 07:11:27 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>10</td>
+                                <td>7</td>
+                                <td>x</td>
+                                <td>sd</td>
+                                <td>Programming</td>
+                                <td>10</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>3.00</td>
+                                <td>sold</td>
+                                <td>sale</td>
+                                <td>232</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>Wed Apr 01 2026 06:58:09 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 07:10:27 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td>7</td>
+                                <td>Book</td>
+                                <td>Mub</td>
+                                <td>Programming</td>
+                                <td>10</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>3.00</td>
+                                <td>sold</td>
+                                <td>sale</td>
+                                <td>13</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>Wed Apr 01 2026 07:07:59 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 07:09:49 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>jazzcash</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td>7</td>
+                                <td>purchase</td>
+                                <td>dvc</td>
+                                <td>Mathematics</td>
+                                <td>10</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>10.00</td>
+                                <td>sold</td>
+                                <td>sale</td>
+                                <td>232</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>7</td>
+                                <td>Wed Apr 01 2026 07:12:22 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 07:14:33 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod,jazzcash</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>13</td>
+                                <td>8</td>
+                                <td>mmm</td>
+                                <td>mm</td>
+                                <td>Programming</td>
+                                <td>10</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>117.00</td>
+                                <td>available</td>
+                                <td>sale</td>
+                                <td>123</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>8</td>
+                                <td>Wed Apr 01 2026 07:47:20 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 07:56:21 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>jazzcash</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>14</td>
+                                <td>2</td>
+                                <td>kingsell</td>
+                                <td>kingsell</td>
+                                <td>Mathematics</td>
+                                <td>12</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>3229.00</td>
+                                <td>available</td>
+                                <td>sale</td>
+                                <td>123</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>4</td>
+                                <td>Wed Apr 01 2026 07:57:26 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 07:58:21 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod,jazzcash</td>
+                                <td>03106857457</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>15</td>
+                                <td>7</td>
+                                <td>lion</td>
+                                <td>lion</td>
+                                <td>Programming</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>1226.00</td>
+                                <td>sold</td>
+                                <td>sale</td>
+                                <td>232</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>15</td>
+                                <td>Wed Apr 01 2026 08:00:00 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:39:36 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>jazzcash</td>
+                                <td>03106857457</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>16</td>
+                                <td>8</td>
+                                <td>rrrrr</td>
+                                <td>rrrrr</td>
+                                <td>Physics</td>
+                                <td>12</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>423.00</td>
+                                <td>available</td>
+                                <td>sale</td>
+                                <td>1231</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>4</td>
+                                <td>Wed Apr 01 2026 08:05:03 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 11:03:17 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod,jazzcash</td>
+                                <td>03106857457</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>17</td>
+                                <td>2</td>
+                                <td>sssss</td>
+                                <td>sssss</td>
+                                <td>English</td>
+                                <td>12</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>2417.00</td>
+                                <td>sold</td>
+                                <td>sale</td>
+                                <td>143</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>7</td>
+                                <td>Wed Apr 01 2026 08:07:06 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 08:37:32 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod,jazzcash,easypaisa,bank</td>
+                                <td>03106857457</td>
+                                <td>03060067896</td>
+                                <td>habib
+                                    ibm num:2232184234932</td>
+                            </tr>
+
+                            <tr>
+                                <td>18</td>
+                                <td>7</td>
+                                <td>aaaa</td>
+                                <td>aaaa</td>
+                                <td>Chemistry</td>
+                                <td>12</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>2417.00</td>
+                                <td>sold</td>
+                                <td>sale</td>
+                                <td>143</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>7</td>
+                                <td>Wed Apr 01 2026 08:39:05 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:13:10 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod,jazzcash,easypaisa,bank</td>
+                                <td>03106857457</td>
+                                <td>03106857455</td>
+                                <td>habib bank: 132456752234</td>
+                            </tr>
+
+                            <tr>
+                                <td>19</td>
+                                <td>7</td>
+                                <td>ooooo</td>
+                                <td>oo</td>
+                                <td>Mathematics</td>
+                                <td>10</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>242.00</td>
+                                <td>sold</td>
+                                <td>sale</td>
+                                <td>qwe</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>5</td>
+                                <td>Wed Apr 01 2026 09:15:20 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:18:07 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>jazzcash,easypaisa,bank,cod</td>
+                                <td>03106857457</td>
+                                <td>0314567457</td>
+                                <td>habiib2345u43</td>
+                            </tr>
+
+                            <tr>
+                                <td>20</td>
+                                <td>7</td>
+                                <td>zzzzzzz</td>
+                                <td>zzz</td>
+                                <td>Economics</td>
+                                <td>12</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>21313.00</td>
+                                <td>sold</td>
+                                <td>sale</td>
+                                <td>232</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>14</td>
+                                <td>Wed Apr 01 2026 09:21:04 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:23:57 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod,jazzcash,easypaisa,bank</td>
+                                <td>`12345</td>
+                                <td>4234324</td>
+                                <td>214314324</td>
+                            </tr>
+
+                            <tr>
+                                <td>21</td>
+                                <td>7</td>
+                                <td>nnnn</td>
+                                <td>nnnn</td>
+                                <td>English</td>
+                                <td>12</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>4320.00</td>
+                                <td>sold</td>
+                                <td>sale</td>
+                                <td>2423</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>10</td>
+                                <td>Wed Apr 01 2026 09:48:04 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:51:09 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod,jazzcash,easypaisa,bank</td>
+                                <td>21356</td>
+                                <td>753</td>
+                                <td>353454254</td>
+                            </tr>
+
+                            <tr>
+                                <td>22</td>
+                                <td>5</td>
+                                <td>vvv</td>
+                                <td>vvv</td>
+                                <td>History</td>
+                                <td>10</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>4545.00</td>
+                                <td>sold</td>
+                                <td>sale</td>
+                                <td>231454</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>8</td>
+                                <td>Wed Apr 01 2026 09:52:10 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:54:01 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod,jazzcash,easypaisa,bank</td>
+                                <td>123457698765</td>
+                                <td>564747456</td>
+                                <td>mgmg 43</td>
+                            </tr>
+
+                            <tr>
+                                <td>23</td>
+                                <td>7</td>
+                                <td>xxxx</td>
+                                <td>xxxxx</td>
+                                <td>History</td>
+                                <td>10</td>
+                                <td></td>
+                                <td></td>
+                                <td>fair</td>
+                                <td>35433.00</td>
+                                <td>sold</td>
+                                <td>sale</td>
+                                <td>324</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>7</td>
+                                <td>Wed Apr 01 2026 10:03:25 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 10:06:08 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod,jazzcash,easypaisa,bank</td>
+                                <td>2143564553</td>
+                                <td>334754</td>
+                                <td>Meezan Bank:123424354353</td>
+                            </tr>
+
+                            <tr>
+                                <td>24</td>
+                                <td>9</td>
+                                <td>e</td>
+                                <td>e</td>
+                                <td>English</td>
+                                <td>12</td>
+                                <td></td>
+                                <td></td>
+                                <td>good</td>
+                                <td>232.00</td>
+                                <td>available</td>
+                                <td>sale</td>
+                                <td>232</td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>Wed Apr 01 2026 11:23:15 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 11:23:15 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>cod</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h2 class="table-title">bookstores</h2>
+                    <span class="badge">1 Records</span>
+                </div>
+                <div class="table-container">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>user_id</th>
+                                <th>store_name</th>
+                                <th>store_description</th>
+                                <th>registration_number</th>
+                                <th>is_approved</th>
+                                <th>is_premium</th>
+                                <th>subscription_start_date</th>
+                                <th>subscription_end_date</th>
+                                <th>total_books</th>
+                                <th>average_rating</th>
+                                <th>total_sales</th>
+                                <th>created_at</th>
+                                <th>updated_at</th>
+                                <th>subscription_expires_at</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>Test Store</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td>0</td>
+                                <td>0.00</td>
+                                <td>0</td>
+                                <td>Wed Apr 01 2026 11:14:25 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 11:14:25 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Thu Apr 01 2027 11:14:25 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h2 class="table-title">messages</h2>
+                    <span class="badge">0 Records</span>
+                </div>
+                <div class="table-container">
+                    <div class="empty-state">No data available in this table.</div>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h2 class="table-title">reviews</h2>
+                    <span class="badge">1 Records</span>
+                </div>
+                <div class="table-container">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>seller_id</th>
+                                <th>reviewer_id</th>
+                                <th>transaction_id</th>
+                                <th>rating</th>
+                                <th>title</th>
+                                <th>comment</th>
+                                <th>is_approved</th>
+                                <th>created_at</th>
+                                <th>updated_at</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td><em>null</em></td>
+                                <td>5</td>
+                                <td></td>
+                                <td></td>
+                                <td>1</td>
+                                <td>Tue Mar 24 2026 07:19:42 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Tue Mar 24 2026 07:19:42 GMT+0500 (Pakistan Standard Time)</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h2 class="table-title">search_history</h2>
+                    <span class="badge">0 Records</span>
+                </div>
+                <div class="table-container">
+                    <div class="empty-state">No data available in this table.</div>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h2 class="table-title">transactions</h2>
+                    <span class="badge">19 Records</span>
+                </div>
+                <div class="table-container">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>book_id</th>
+                                <th>seller_id</th>
+                                <th>buyer_id</th>
+                                <th>transaction_type</th>
+                                <th>status</th>
+                                <th>amount</th>
+                                <th>commission</th>
+                                <th>payment_method</th>
+                                <th>notes</th>
+                                <th>completed_at</th>
+                                <th>created_at</th>
+                                <th>updated_at</th>
+                                <th>transaction_reference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>1</td>
+                                <td>4</td>
+                                <td>1</td>
+                                <td>7</td>
+                                <td>sale</td>
+                                <td>pending</td>
+                                <td>5.00</td>
+                                <td>0.50</td>
+                                <td>easypaisa</td>
+                                <td></td>
+                                <td><em>null</em></td>
+                                <td>Wed Apr 01 2026 06:46:42 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 06:46:42 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>1</td>
+                                <td>7</td>
+                                <td>sale</td>
+                                <td>pending</td>
+                                <td>1192.00</td>
+                                <td>119.20</td>
+                                <td>cod</td>
+                                <td></td>
+                                <td><em>null</em></td>
+                                <td>Wed Apr 01 2026 06:57:34 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 06:57:34 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>11</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>sale</td>
+                                <td>pending</td>
+                                <td>3.00</td>
+                                <td>0.30</td>
+                                <td>cod</td>
+                                <td></td>
+                                <td><em>null</em></td>
+                                <td>Wed Apr 01 2026 07:09:46 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 07:09:46 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>4</td>
+                                <td>10</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>sale</td>
+                                <td>pending</td>
+                                <td>3.00</td>
+                                <td>0.30</td>
+                                <td>cod</td>
+                                <td></td>
+                                <td><em>null</em></td>
+                                <td>Wed Apr 01 2026 07:10:23 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 07:10:23 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>5</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>7</td>
+                                <td>sale</td>
+                                <td>pending</td>
+                                <td>1192.00</td>
+                                <td>119.20</td>
+                                <td>cod</td>
+                                <td></td>
+                                <td><em>null</em></td>
+                                <td>Wed Apr 01 2026 07:11:09 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 07:11:09 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>6</td>
+                                <td>12</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>sale</td>
+                                <td>pending</td>
+                                <td>10.00</td>
+                                <td>1.00</td>
+                                <td>cod</td>
+                                <td></td>
+                                <td><em>null</em></td>
+                                <td>Wed Apr 01 2026 07:14:32 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 07:14:32 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>7</td>
+                                <td>17</td>
+                                <td>2</td>
+                                <td>7</td>
+                                <td>sale</td>
+                                <td>pending</td>
+                                <td>2417.00</td>
+                                <td>241.70</td>
+                                <td>easypaisa</td>
+                                <td></td>
+                                <td><em>null</em></td>
+                                <td>Wed Apr 01 2026 08:21:34 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 08:21:34 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>1234651324563</td>
+                            </tr>
+
+                            <tr>
+                                <td>8</td>
+                                <td>18</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>sale</td>
+                                <td>pending</td>
+                                <td>2417.00</td>
+                                <td>241.70</td>
+                                <td>jazzcash</td>
+                                <td></td>
+                                <td><em>null</em></td>
+                                <td>Wed Apr 01 2026 08:39:36 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 08:39:36 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>237666453245</td>
+                            </tr>
+
+                            <tr>
+                                <td>9</td>
+                                <td>18</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>sale</td>
+                                <td>completed</td>
+                                <td>2417.00</td>
+                                <td>241.70</td>
+                                <td>jazzcash</td>
+                                <td></td>
+                                <td>Wed Apr 01 2026 08:41:25 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 08:40:29 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 08:41:25 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>237666453245</td>
+                            </tr>
+
+                            <tr>
+                                <td>10</td>
+                                <td>18</td>
+                                <td>7</td>
+                                <td>4</td>
+                                <td>sale</td>
+                                <td>completed</td>
+                                <td>2417.00</td>
+                                <td>241.70</td>
+                                <td>jazzcash</td>
+                                <td></td>
+                                <td>Wed Apr 01 2026 09:08:42 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 08:41:13 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:08:42 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>237666453245</td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td>19</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>sale</td>
+                                <td>completed</td>
+                                <td>242.00</td>
+                                <td>24.20</td>
+                                <td>jazzcash</td>
+                                <td></td>
+                                <td>Wed Apr 01 2026 09:18:00 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:17:09 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:18:00 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>12437643456</td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td>20</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>sale</td>
+                                <td>pending</td>
+                                <td>21313.00</td>
+                                <td>2131.30</td>
+                                <td>jazzcash</td>
+                                <td></td>
+                                <td><em>null</em></td>
+                                <td>Wed Apr 01 2026 09:21:48 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:21:48 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>13245671233</td>
+                            </tr>
+
+                            <tr>
+                                <td>13</td>
+                                <td>20</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>sale</td>
+                                <td>completed</td>
+                                <td>21313.00</td>
+                                <td>2131.30</td>
+                                <td>jazzcash</td>
+                                <td></td>
+                                <td>Wed Apr 01 2026 09:23:52 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:23:00 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:23:52 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>4565432453</td>
+                            </tr>
+
+                            <tr>
+                                <td>14</td>
+                                <td>15</td>
+                                <td>7</td>
+                                <td>5</td>
+                                <td>sale</td>
+                                <td>pending</td>
+                                <td>1226.00</td>
+                                <td>122.60</td>
+                                <td>jazzcash</td>
+                                <td></td>
+                                <td><em>null</em></td>
+                                <td>Wed Apr 01 2026 09:25:34 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:25:34 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>zfd</td>
+                            </tr>
+
+                            <tr>
+                                <td>15</td>
+                                <td>15</td>
+                                <td>7</td>
+                                <td>5</td>
+                                <td>sale</td>
+                                <td>completed</td>
+                                <td>1226.00</td>
+                                <td>122.60</td>
+                                <td>jazzcash</td>
+                                <td></td>
+                                <td>Wed Apr 01 2026 09:37:40 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:35:38 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:37:40 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>324234234</td>
+                            </tr>
+
+                            <tr>
+                                <td>16</td>
+                                <td>21</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>sale</td>
+                                <td>completed</td>
+                                <td>4320.00</td>
+                                <td>432.00</td>
+                                <td>jazzcash</td>
+                                <td></td>
+                                <td>Wed Apr 01 2026 09:51:00 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:50:15 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:51:00 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>766453231456</td>
+                            </tr>
+
+                            <tr>
+                                <td>17</td>
+                                <td>22</td>
+                                <td>5</td>
+                                <td>8</td>
+                                <td>sale</td>
+                                <td>completed</td>
+                                <td>4545.00</td>
+                                <td>454.50</td>
+                                <td>jazzcash</td>
+                                <td></td>
+                                <td>Wed Apr 01 2026 09:53:52 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:53:09 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 09:53:52 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>2345764324</td>
+                            </tr>
+
+                            <tr>
+                                <td>18</td>
+                                <td>23</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>sale</td>
+                                <td>completed</td>
+                                <td>35433.00</td>
+                                <td>3543.30</td>
+                                <td>jazzcash</td>
+                                <td></td>
+                                <td>Wed Apr 01 2026 10:05:39 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 10:05:00 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 10:05:39 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>4545435313132223232</td>
+                            </tr>
+
+                            <tr>
+                                <td>19</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>8</td>
+                                <td>sale</td>
+                                <td>pending</td>
+                                <td>1192.00</td>
+                                <td>119.20</td>
+                                <td>cod</td>
+                                <td></td>
+                                <td><em>null</em></td>
+                                <td>Wed Apr 01 2026 10:26:06 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 10:26:06 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h2 class="table-title">users</h2>
+                    <span class="badge">8 Records</span>
+                </div>
+                <div class="table-container">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>full_name</th>
+                                <th>email</th>
+                                <th>password</th>
+                                <th>phone</th>
+                                <th>role</th>
+                                <th>university</th>
+                                <th>city</th>
+                                <th>address</th>
+                                <th>profile_image</th>
+                                <th>bio</th>
+                                <th>is_verified</th>
+                                <th>is_active</th>
+                                <th>created_at</th>
+                                <th>updated_at</th>
+                                <th>jazzcash_number</th>
+                                <th>easypaisa_number</th>
+                                <th>bank_details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>1</td>
+                                <td>Mubashir</td>
+                                <td>mubashir@university.com</td>
+                                <td>$2a$10$f9fWHu.SJEI2DhfYlttBCeoPRL9AizEP.X9rLggxVRP5PaSLsgih6</td>
+                                <td>03106857457</td>
+                                <td>student</td>
+                                <td>fast</td>
+                                <td>Multan</td>
+                                <td>fast university hostel</td>
+                                <td><em>null</em></td>
+                                <td>hy</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>Tue Mar 24 2026 05:48:39 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Tue Mar 24 2026 07:16:29 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>anas</td>
+                                <td>mub@university.com</td>
+                                <td>$2a$10$8DQF.dvV96LcFzqklQ/2hOERKcqOMF1oSbrZthSfvdMyhrnHmGi0.</td>
+                                <td>03106857457</td>
+                                <td>bookstore</td>
+                                <td>numl</td>
+                                <td>Multan</td>
+                                <td>fast university hostel</td>
+                                <td><em>null</em></td>
+                                <td></td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>Tue Mar 24 2026 06:20:55 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Tue Mar 24 2026 14:22:10 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>4</td>
+                                <td>Admin User</td>
+                                <td>admin@bookbridge.edu</td>
+                                <td>$2a$10$L9RPcS78F4y7sZV0Oy.9peZ61bI6Bkh8./pLkn75G3GHu57yyUvJ.</td>
+                                <td><em>null</em></td>
+                                <td>admin</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Tue Mar 24 2026 16:03:21 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Tue Mar 24 2026 16:03:21 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>5</td>
+                                <td>admin</td>
+                                <td>admin@book.edu</td>
+                                <td>$2a$10$Piyj4821t9s45eSC0Fm0UOMXhDyG0ChWkZ9JxONh6eZz6VZXvKyvO</td>
+                                <td><em>null</em></td>
+                                <td>admin</td>
+                                <td>fast</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>Tue Mar 31 2026 22:20:20 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Tue Mar 31 2026 22:20:20 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>7</td>
+                                <td>Muzammil</td>
+                                <td>muzammail@university.com</td>
+                                <td>$2a$10$QfAofrxXUmNOohJw2uUY0eWqsj/ktT.GeW/yA76OPlUbaieXRw1a6</td>
+                                <td>03060068786</td>
+                                <td>bookstore</td>
+                                <td>numl</td>
+                                <td>Multan</td>
+                                <td>fast university hostel</td>
+                                <td><em>null</em></td>
+                                <td>mu</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Wed Apr 01 2026 06:23:26 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 10:18:40 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>8</td>
+                                <td>king</td>
+                                <td>k@university.com</td>
+                                <td>$2a$10$athHHlp3Nn6CktTqhxRqD.Y23tfE4L0y.RKYo.g/gD3t3R38TI61S</td>
+                                <td><em>null</em></td>
+                                <td>student</td>
+                                <td>numl</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>Wed Apr 01 2026 07:09:20 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 10:18:36 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>9</td>
+                                <td>king123</td>
+                                <td>kin@university.com</td>
+                                <td>$2a$10$KV5CJxCPOaAAIVr1DdRX6eiMJbVQhIqNE2YL5LGA6/ZXJTf0yv7Fa</td>
+                                <td><em>null</em></td>
+                                <td>bookstore</td>
+                                <td>numl</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>Wed Apr 01 2026 10:55:51 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 10:55:51 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                            <tr>
+                                <td>10</td>
+                                <td>king123</td>
+                                <td>kl@university.com</td>
+                                <td>$2a$10$6B3LnAybb5YDo4zMxWve.ugGow93k37ZdkaRclK/k9I1t8/1PtOZC</td>
+                                <td><em>null</em></td>
+                                <td>bookstore</td>
+                                <td>numl</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>Wed Apr 01 2026 11:17:57 GMT+0500 (Pakistan Standard Time)</td>
+                                <td>Wed Apr 01 2026 11:17:57 GMT+0500 (Pakistan Standard Time)</td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                                <td><em>null</em></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h2 class="table-title">wishlist</h2>
+                    <span class="badge">0 Records</span>
+                </div>
+                <div class="table-container">
+                    <div class="empty-state">No data available in this table.</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

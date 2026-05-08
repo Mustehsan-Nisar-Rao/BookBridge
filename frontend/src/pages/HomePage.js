@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   FaArrowRight, FaUsers, FaStar, FaLeaf, FaShieldAlt,
@@ -325,7 +325,7 @@ const HomePage = () => {
 
       {/* ══════════════════════════════════════════
           HOW IT WORKS
-      ══════════════════════════════════���═══════ */}
+      ══════════════════��═══════════════���═══════ */}
       <section className="scroll-animate" style={{ padding: '96px 0', background: 'white' }}>
         <div className="container-custom">
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>

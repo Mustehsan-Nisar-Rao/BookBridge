@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useSocket } from '../context/SocketContext';
-import { bookService, transactionService, reviewService } from '../services/api';
+import { bookService, transactionService } from '../services/api';
 import { FaBook, FaShoppingBag, FaStar, FaDollarSign, FaSync } from 'react-icons/fa';
 
 const DashboardPage = () => {
@@ -14,6 +14,7 @@ const DashboardPage = () => {
 
   useEffect(() => {
     fetchDashboardData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 💡 Real-time socket listener for dashboard updates
@@ -32,6 +33,7 @@ const DashboardPage = () => {
         socket.off('global_transaction_update', handleUpdate);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socket]);
 
   const fetchDashboardData = async () => {

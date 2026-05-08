@@ -4,15 +4,14 @@ import {
   FaArrowRight, FaUsers, FaStar, FaLeaf, FaShieldAlt,
   FaBookOpen, FaHeart, FaChevronRight, FaMoneyBillWave,
   FaExchangeAlt, FaHandHoldingHeart, FaUserPlus,
-  FaSearch, FaComments, FaCheckCircle, FaLock, FaUniversity,
-  FaEye
+  FaSearch, FaComments, FaCheckCircle, FaLock, FaUniversity
 } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/logo.png';
 
 /* Intersection Observer scroll animation */
 const useScrollAnimation = () => {
-  useEffect(() => {
+  React.useEffect(() => {
     const sections = document.querySelectorAll('section.scroll-animate');
     const observer = new IntersectionObserver(
       (entries) => {
@@ -79,7 +78,7 @@ const TestimonialCard = ({ name, uni, text, rating }) => (
 /* ─── Main Component ─────────────────────────────────────── */
 const HomePage = () => {
   const { isAuthenticated } = useAuth();
-  useScrollAnimation();
+  useScrollAnimation(); // eslint-disable-line react-hooks/exhaustive-deps
 
   const features = [
     {
@@ -326,7 +325,7 @@ const HomePage = () => {
 
       {/* ══════════════════════════════════════════
           HOW IT WORKS
-      ══════════════════════════════════════════ */}
+      ══════════════════════════════════���═══════ */}
       <section className="scroll-animate" style={{ padding: '96px 0', background: 'white' }}>
         <div className="container-custom">
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>

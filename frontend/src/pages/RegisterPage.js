@@ -31,7 +31,6 @@ const RegisterPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [currentStep, setCurrentStep] = useState(1);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

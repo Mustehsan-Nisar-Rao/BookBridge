@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { bookService, transactionService, reviewService } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { useSocket } from '../context/SocketContext';
-import { FaStar, FaShoppingCart, FaHeart, FaSync, FaMoneyBillWave, FaMobileAlt, FaUniversity, FaExclamationTriangle, FaEye, FaUpload, FaClock } from 'react-icons/fa';
+import { FaStar, FaShoppingCart, FaHeart, FaMoneyBillWave, FaMobileAlt, FaUniversity, FaExclamationTriangle, FaEye, FaUpload, FaClock } from 'react-icons/fa';
 
 const BookDetailsPage = () => {
   const { bookId } = useParams();
@@ -21,8 +21,30 @@ const BookDetailsPage = () => {
   const [paymentData, setPaymentData] = useState({ method: 'cod', notes: '', transaction_reference: '' });
   const [isProcessing, setIsProcessing] = useState(false);
 
+  const fetchBookDetails = async () => {
+    try {
+      const bookResponse = await bookService.getBookById(bookId);
+      const bookData = bookResponse.data.data;
+      setBook(bookData);
+
+      // Set default payment method to first accepted one
+      if (bookData.accepted_payment_methods) {
+        const firstMethod = bookData.accepted_payment_methods.split(',')[0];
+        setPaymentData(prev => ({ ...prev, method: firstMethod }));
+      }
+
+      const reviewResponse = await reviewService.getSellerReviews(bookData.seller_id);
+      setReviews(reviewResponse.data.data.reviews || []);
+    } catch (error) {
+      console.error('Error fetching book details:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchBookDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bookId]);
 
   // 💡 Real-time status updates via Socket.io
@@ -49,28 +71,8 @@ const BookDetailsPage = () => {
         socket.off('transaction_updated', handleTransactionUpdate);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socket, bookId]);
-
-  const fetchBookDetails = async () => {
-    try {
-      const bookResponse = await bookService.getBookById(bookId);
-      const bookData = bookResponse.data.data;
-      setBook(bookData);
-
-      // Set default payment method to first accepted one
-      if (bookData.accepted_payment_methods) {
-        const firstMethod = bookData.accepted_payment_methods.split(',')[0];
-        setPaymentData(prev => ({ ...prev, method: firstMethod }));
-      }
-
-      const reviewResponse = await reviewService.getSellerReviews(bookData.seller_id);
-      setReviews(reviewResponse.data.data.reviews || []);
-    } catch (error) {
-      console.error('Error fetching book details:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const handleInitiateBuy = () => {
     if (!isAuthenticated) { navigate('/login'); return; }

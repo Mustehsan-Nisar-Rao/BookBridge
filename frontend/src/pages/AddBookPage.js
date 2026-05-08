@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { bookService } from '../services/api';
-import { FaCloudUploadAlt, FaMoneyBillWave, FaMobileAlt, FaUniversity, FaCreditCard, FaBookOpen, FaCashRegister } from 'react-icons/fa';
+import { FaCloudUploadAlt, FaMoneyBillWave, FaMobileAlt, FaUniversity, FaCreditCard, FaBookOpen } from 'react-icons/fa';
 
 const PAYMENT_METHODS = [
   {
@@ -49,7 +49,7 @@ const colorMap = {
 
 const AddBookPage = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { isAuthenticated } = useAuth();
   const [formData, setFormData] = useState({
     title: '',
     author: '',

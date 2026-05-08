@@ -10,7 +10,6 @@ const PendingVerificationPage = () => {
   const navigate = useNavigate();
   const [adminPaymentInfo, setAdminPaymentInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [isCheckingStatus, setIsCheckingStatus] = useState(false);
 
   useEffect(() => {
     // If user is actually active, redirect to dashboard
@@ -34,7 +33,6 @@ const PendingVerificationPage = () => {
   }, [user, navigate]);
 
   const handleRefreshStatus = async () => {
-    setIsCheckingStatus(true);
     try {
       const updatedUser = await checkAuthStatus();
       if (updatedUser.is_active) {
@@ -42,8 +40,6 @@ const PendingVerificationPage = () => {
       }
     } catch (err) {
       console.error('Failed to refresh status');
-    } finally {
-      setIsCheckingStatus(false);
     }
   };
 

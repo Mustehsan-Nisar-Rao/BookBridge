@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BookCard from '../components/BookCard';
 import { bookService } from '../services/api';
-import { FaSearch, FaFilter } from 'react-icons/fa';
+
 
 const BooksPage = () => {
   const navigate = useNavigate();
@@ -21,13 +21,14 @@ const BooksPage = () => {
     pages: 1,
     currentPage: 1
   });
-  const [searchTerm, setSearchTerm] = useState('');
+
 
   const subjects = ['Programming', 'Mathematics', 'Physics', 'Chemistry', 'Biology', 'History', 'English', 'Economics'];
   const classes = ['1st Year', '2nd Year', '3rd Year', '4th Year', 'Postgraduate'];
 
   useEffect(() => {
     fetchBooks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
   const fetchBooks = async () => {
